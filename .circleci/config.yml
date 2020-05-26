@@ -22,4 +22,9 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       - run: yarn test
-      - run: npx chromatic --project-token=<project-token> --exit-zero-on-changes
+      - run: npx chromatic --project-token=2wix88i1ziu
+      - run: |
+          if [ $CIRCLE_BRANCH = "master" ]
+          then
+            yarn release
+          fi
